@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-cormorant), "Palatino Linotype", Palatino, serif;
+  --font-hand: var(--font-caveat), "Segoe Script", cursive;
+  --font-script: var(--font-parisienne), "Palatino Linotype", cursive;
+  --color-cream: #f3ece3;
+  --color-paper: #f6f1e8;
+  --color-blush: #e6d2cb;
+  --color-burgundy: #6d3a3a;
+  --color-ink: #3c2a28;
+  --color-gold: #b8956a;
+  --color-night: #140e10;
+}
+
+html {
+  height: 100%;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #2c1a1c;
+  color: var(--color-ink);
+}
+
+body.album-open {
+  height: auto;
+  overflow: visible;
+}
+
+::selection {
+  background: #e7d0c8;
+  color: #3a2424;
+}
+
+:focus-visible {
+  outline: 1px solid #b8956a;
+  outline-offset: 3px;
+}
+
+@layer utilities {
+  .paper {
+    background-color: #f6f1e8;
+    background-image:
+      radial-gradient(ellipse at top, rgba(255, 252, 247, 0.75), transparent 56%),
+      radial-gradient(rgba(90, 58, 48, 0.035) 0.45px, transparent 0.55px);
+    background-size: auto, 5px 5px;
+  }
+
+  .paper-warm {
+    background-color: #f7eee8;
+    background-image:
+      radial-gradient(ellipse at top, rgba(255, 250, 246, 0.72), transparent 54%),
+      radial-gradient(ellipse at 80% 0%, rgba(201, 150, 140, 0.16), transparent 42%),
+      radial-gradient(rgba(90, 58, 48, 0.03) 0.45px, transparent 0.55px);
+    background-size: auto, auto, 5px 5px;
+  }
+
+  .lift {
+    box-shadow:
+      0 16px 36px rgba(72, 40, 36, 0.12),
+      0 2px 8px rgba(72, 40, 36, 0.05);
+  }
+
+  .foil-text {
+    background-image: linear-gradient(
+      180deg,
+      #fff8ec 0%,
+      #f0e2c4 40%,
+      #d7bc86 78%,
+      #f7edd8 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .photo-grain {
+    background-image:
+      radial-gradient(rgba(255, 255, 255, 0.55) 0.5px, transparent 0.5px),
+      radial-gradient(rgba(40, 20, 16, 0.45) 0.5px, transparent 0.5px);
+    background-size: 3px 3px, 5px 5px;
+    background-position: 0 0, 1px 2px;
+  }
+
+  .floaty {
+    animation: floaty linear infinite;
+  }
+
+  .breath {
+    animation: breath 2.8s ease-in-out infinite;
+  }
+
+  .sky-twinkle {
+    animation-name: skyTwinkle;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  .sky-pulse {
+    animation: skyPulse 2.8s ease-in-out infinite;
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(7px, -18px, 0);
+  }
+}
+
+@keyframes breath {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes skyTwinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes skyPulse {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(1.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .ambient,
+  .floaty,
+  .breath,
+  .sky-twinkle,
+  .sky-pulse {
+    animation: none !important;
+  }
+
+  .ambient {
+    display: none;
+  }
+}
