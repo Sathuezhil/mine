@@ -286,7 +286,7 @@ export const memories: Memory[] = [
   {
     id: "keep-3",
     chapter: "keep",
-    image: "/memory/full3.jpg",
+    image: "/memory/fall3.jpg",
     caption: "The day you asked.",
     memory: "You proposed… and my whole forever started answering yes.",
     location: "the day everything changed",
